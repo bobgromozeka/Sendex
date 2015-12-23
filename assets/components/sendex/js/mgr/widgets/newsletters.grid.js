@@ -293,4 +293,4 @@ Ext.extend(Sendex.grid.Newsletters, MODx.grid.Grid, {
 		this.refresh();
 	}
 });
-Ext.reg('sendex-grid-newsletters', Sendex.grid.Items);
+Ext.reg('sendex-grid-newsletters', Sendex.grid.Newsletters);
