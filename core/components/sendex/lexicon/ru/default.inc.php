@@ -2,16 +2,16 @@
 include_once 'setting.inc.php';
 
 $_lang['sendex'] = 'Sendex';
-$_lang['sendex_menu_desc'] = 'Пример расширения для разработки.';
-$_lang['sendex_intro_msg'] = 'Вы можете выделять сразу несколько предметов при помощи Shift или Ctrl.';
+$_lang['sendex_menu_desc'] = 'Управление подписками';
+$_lang['sendex_intro_msg'] = 'На этой странице вы создаете и редактируете ваши подписки.';
 
-$_lang['sendex_items'] = 'Предметы';
+$_lang['sendex_newsletters'] = 'Подписки';
 $_lang['sendex_item_id'] = 'Id';
 $_lang['sendex_item_name'] = 'Название';
 $_lang['sendex_item_description'] = 'Описание';
 $_lang['sendex_item_active'] = 'Активно';
 
-$_lang['sendex_item_create'] = 'Создать предмет';
+$_lang['sendex_btn_create'] = 'Создать';
 $_lang['sendex_item_update'] = 'Изменить Предмет';
 $_lang['sendex_item_enable'] = 'Включить Предмет';
 $_lang['sendex_items_enable'] = 'Включить Предметы';

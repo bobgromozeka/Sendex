@@ -20,13 +20,13 @@ Sendex.panel.Home = function (config) {
 			border: true,
 			hideMode: 'offsets',
 			items: [{
-				title: _('sendex_items'),
+				title: _('sendex_newsletters'),
 				layout: 'anchor',
 				items: [{
-					html: _('sendex_intro_msg'),
+                    html: _('sendex_newsletters_intro'),
 					cls: 'panel-desc',
 				}, {
-					xtype: 'sendex-grid-items',
+					xtype: 'sendex-grid-newsletters',
 					cls: 'main-wrapper',
 				}]
 			}]

@@ -1,7 +1,7 @@
-Sendex.grid.Items = function (config) {
+Sendex.grid.Newsletters = function (config) {
 	config = config || {};
 	if (!config.id) {
-		config.id = 'sendex-grid-items';
+		config.id = 'sendex-grid-newsletters';
 	}
 	Ext.applyIf(config, {
 		url: Sendex.config.connector_url,
@@ -10,7 +10,7 @@ Sendex.grid.Items = function (config) {
 		tbar: this.getTopBar(config),
 		sm: new Ext.grid.CheckboxSelectionModel(),
 		baseParams: {
-			action: 'mgr/item/getlist'
+			action: 'mgr/newsletter/getlist'
 		},
 		listeners: {
 			rowDblClick: function (grid, rowIndex, e) {
@@ -34,7 +34,7 @@ Sendex.grid.Items = function (config) {
 		remoteSort: true,
 		autoHeight: true,
 	});
-	Sendex.grid.Items.superclass.constructor.call(this, config);
+	Sendex.grid.Newsletters.superclass.constructor.call(this, config);
 
 	// Clear selection on grid refresh
 	this.store.on('load', function () {
@@ -43,7 +43,7 @@ Sendex.grid.Items = function (config) {
 		}
 	}, this);
 };
-Ext.extend(Sendex.grid.Items, MODx.grid.Grid, {
+Ext.extend(Sendex.grid.Newsletters, MODx.grid.Grid, {
 	windows: {},
 
 	getMenu: function (grid, rowIndex) {
@@ -57,7 +57,7 @@ Ext.extend(Sendex.grid.Items, MODx.grid.Grid, {
 
 	createItem: function (btn, e) {
 		var w = MODx.load({
-			xtype: 'sendex-item-window-create',
+			xtype: 'sendex-newsletter-window-create',
 			id: Ext.id(),
 			listeners: {
 				success: {
@@ -84,14 +84,14 @@ Ext.extend(Sendex.grid.Items, MODx.grid.Grid, {
 		MODx.Ajax.request({
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/get',
+				action: 'mgr/newsletter/get',
 				id: id
 			},
 			listeners: {
 				success: {
 					fn: function (r) {
 						var w = MODx.load({
-							xtype: 'sendex-item-window-update',
+							xtype: 'sendex-newsletter-window-update',
 							id: Ext.id(),
 							record: r,
 							listeners: {
@@ -118,14 +118,14 @@ Ext.extend(Sendex.grid.Items, MODx.grid.Grid, {
 		}
 		MODx.msg.confirm({
 			title: ids.length > 1
-				? _('sendex_items_remove')
-				: _('sendex_item_remove'),
+				? _('sendex_newsletters_remove')
+				: _('sendex_newsletter_remove'),
 			text: ids.length > 1
-				? _('sendex_items_remove_confirm')
-				: _('sendex_item_remove_confirm'),
+				? _('sendex_newsletters_remove_confirm')
+				: _('sendex_newsletter_remove_confirm'),
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/remove',
+				action: 'mgr/newsletter/remove',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -147,7 +147,7 @@ Ext.extend(Sendex.grid.Items, MODx.grid.Grid, {
 		MODx.Ajax.request({
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/disable',
+				action: 'mgr/newsletter/disable',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -168,7 +168,7 @@ Ext.extend(Sendex.grid.Items, MODx.grid.Grid, {
 		MODx.Ajax.request({
 			url: this.config.url,
 			params: {
-				action: 'mgr/item/enable',
+				action: 'mgr/newsletter/enable',
 				ids: Ext.util.JSON.encode(ids),
 			},
 			listeners: {
@@ -187,22 +187,22 @@ Ext.extend(Sendex.grid.Items, MODx.grid.Grid, {
 
 	getColumns: function (config) {
 		return [{
-			header: _('sendex_item_id'),
+			header: _('sendex_newsletter_id'),
 			dataIndex: 'id',
 			sortable: true,
 			width: 70
 		}, {
-			header: _('sendex_item_name'),
+			header: _('sendex_newsletter_name'),
 			dataIndex: 'name',
 			sortable: true,
 			width: 200,
 		}, {
-			header: _('sendex_item_description'),
+			header: _('sendex_newsletter_description'),
 			dataIndex: 'description',
 			sortable: false,
 			width: 250,
 		}, {
-			header: _('sendex_item_active'),
+			header: _('sendex_newsletter_active'),
 			dataIndex: 'active',
 			renderer: Sendex.utils.renderBoolean,
 			sortable: true,
@@ -219,7 +219,7 @@ Ext.extend(Sendex.grid.Items, MODx.grid.Grid, {
 
 	getTopBar: function (config) {
 		return [{
-			text: '<i class="icon icon-plus"></i>&nbsp;' + _('sendex_item_create'),
+			text: '<i class="icon icon-plus"></i>&nbsp;' + _('sendex_newsletter_create'),
 			handler: this.createItem,
 			scope: this
 		}, '->', {
@@ -293,4 +293,4 @@ Ext.extend(Sendex.grid.Items, MODx.grid.Grid, {
 		this.refresh();
 	}
 });
-Ext.reg('sendex-grid-items', Sendex.grid.Items);
+Ext.reg('sendex-grid-newsletters', Sendex.grid.Items);
